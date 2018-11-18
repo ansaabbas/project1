@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewData["Title"] = "AllStudents";
+}
+
+@model IEnumerable<Student1>
+<br />
+
+<a href="/Student/CreateStudent" class="btn btn-warning">Add new student</a>
+<br />
+
+<form method="post" action="/student/allstudents">
+    <input type="text" id="SearchByName" name="SearchByName" />
+    <input type="text" id="dob" name="dob" />
+    <input type="submit" value="Search" />
+</form>
+
+
+<h1>Total Students: @Model.Count()</h1>
+
+
+<table id="ourtable" name="ourtable" class="table table-bordered">
+
+    <thead>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                Name
+            </td>
+            <td>
+                Father_Name
+            </td>
+            <td>
+                RollNo
+            </td>
+            <td>
+                Department
+            </td>
+
+            <td>
+                Subject
+            </td>
+
+            <td>
+                Email
+            </td>
+            <td>
+                Profile_Picture
+            </td>
+            <td>
+                Cv
+            </td>
+            <td>
+                Gpa
+            </td>
+
+            <td>Actions</td>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (Student1 S in Model)
+        {
+            <tr>
+                <td>
+                    @S.Id
+                </td>
+                <td>
+                    @S.Name
+                </td>
+                <td>
+                    @S.FatherName
+                </td>
+
+                <td>
+                    @S.RollNo
+                </td>
+                <td>
+                    @S.Department
+                </td>
+                <td>
+                    @S.Subject
+                </td>
+
+                <td> @S.Email</td>
+                <td>
+                    @S.ProfilePicture
+                </td>
+                <td>
+                    @S.Cv
+                </td>
+
+                <td>
+                    @S.Gpa
+                </td>
+
+                <td>
+                    <a href="/Student/StudentDetail?Id=@S.Id" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span>Detail</a>
+                    <a href="/Student/DeleteStudent?Id=@S.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section abc
+    {
+    <script>
+        $().ready(function () {
+            $('#studentTable').DataTable();
+        });
+
+        $(function () {
+
+
+
+
+            $('.DeleteStudent').click(function () {
+                var clickedbutton = $(this);
+                var studentid = $(this).data("studentid");
+                $(this).text("Please wait");
+                $.ajax({
+                    url: "/student/deletestudentajax",
+                    type: "POST",
+                    data: {
+                        Id: studentid,
+                        Email: "a@a.com"
+                    },
+                    complete: function (myresult) {
+
+
+
+                        if (myresult.responseText == "Yes") {
+                            clickedbutton.parent().parent().addClass("danger");
+                            clickedbutton.parent().parent().fadeOut(3000);
+                        } else {
+                            alert("Please try again");
+                        }
+                    }
+                });
+
+
+            });
+        });
+
+    </script>
+
+
+}
+

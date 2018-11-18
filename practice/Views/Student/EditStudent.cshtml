@@ -1,0 +1,64 @@
+﻿
+@model Student1
+
+@{
+    ViewData["Title"] = "EditStudent";
+}
+<h1>Please fill the details to update the Data</h1>
+@if (ViewBag.MessageSucess != null)
+{
+    <h3 class="alert-success"><span class="glyphicon glyphicon-ok-circle"></span> @ViewBag.MessageSucess</h3>
+}
+else
+{
+    if (ViewBag.MessageFailure != null)
+    {
+        <h3 class="alert-danger"><span class="glyphicon glyphicon-remove-circle"></span> @ViewBag.MessageFailure</h3>
+    }
+}
+        <form method="post" action="/Student/EditStudent">
+            <p>Id: @Model.Id</p>
+            @Html.HiddenFor(m => m.Id)
+
+            <label>ID:</label>
+            <input id="Id" name="Id" value="@Model.Id" class="text-muted" />
+            <label>Name:</label>
+
+            <input id="Name" name="Name" value="@Model.Name" />
+            <label>Father_Name:</label>
+            <input id="Father_Name" name="Father_Name" value="@Model.FatherName" />
+
+            <label>Roll_No:</label>
+            <input id="Roll_No" name="Roll_No" value="@Model.RollNo" />
+            <label>Department:</label>
+
+            <input id="Department" name="Department" value="@Model.Department" />
+            <label>Subject:</label>
+
+            <input id="Subject" name="Subject" value="@Model.Subject" />
+            <label>Gpa:</label>
+
+            <input id="Gpa" name="Gpa" value="@Model.Gpa" />
+            <label>Email:</label>
+
+            <input id="Email" name="Email" value="@Model.Email" />
+            <label>Profile_Picture:</label>
+
+            <input id="Profile_Picture" name="Profile_Picture" value="@Model.ProfilePicture" />
+            <label>Cv:</label>
+
+            <input id="Cv" name="Cv" value="@Model.Cv" />
+
+
+
+            <br />
+            <br />
+            <div> 
+            <input type="submit" value="Save and Update" class="btn btn-success" />
+            </div>
+        </form>
+                    <div>
+                        <a asp-action="AllStudents" class="btn btn-primary">Back to List</a>
+                    </div>
+
+

@@ -1,0 +1,115 @@
+﻿@model Student1
+
+
+<h1>
+    Student Registration Form
+</h1>
+
+
+
+<h2>Register New Student</h2>
+@{
+    ViewData["Title"] = "CreateStudent";
+    if (ViewBag.Message != null)
+    {
+        if (ViewBag.Message == "Registration Done Succefully!")
+        {
+            <h2 class="alert alert-success"><span class="glyphicon glyphicon-ok-circle"></span> @ViewBag.Message</h2>
+        }
+        else
+        {
+            <h2 class="alert alert-danger"><span class="glyphicon glyphicon-remove-circle"></span> @ViewBag.Message</h2>
+        }
+    }
+
+    if (ViewBag.EmailResponse != null)
+    {
+        <h5>@ViewBag.EmailResponse</h5>
+    }
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateStudent">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="FatherName" class="control-label"></label>
+                <input asp-for="FatherName" class="form-control" />
+                <span asp-validation-for="FatherName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RollNo" class="control-label"></label>
+                <input asp-for="RollNo" class="form-control" />
+                <span asp-validation-for="RollNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Department" class="control-label"></label>
+                <input asp-for="Department" class="form-control" />
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+
+
+            <div>
+                <label class="col-md-3">Email: </label>
+
+                <div class="col-md-9">
+                    <input type="text" id="Email" name="Email" />
+                    <span id="NameError"></span>
+                </div>
+
+            </div>
+
+
+            <div>
+                <label class="col-md-3">Profile Picture: </label>
+
+                <div class="col-md-9">
+                    <input type="file" id="ProfilePicture" name="ProfilePicture" />
+                    <span id="ProfilePictureError"></span>
+                </div>
+
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div>
+                <label class="col-md-3">CV: </label>
+
+                <div class="col-md-9">
+                    <input type="file" id="Cv" name="Cv" />
+                    <span id="CvError"></span>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">
+                    <span class="glyphicon glyphicon-floppy-save"></span> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<br />
+
+
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+

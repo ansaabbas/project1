@@ -1,0 +1,110 @@
+﻿@model practice.Models.Student1
+
+@{
+    ViewData["Title"] = "StudentDetail";
+}
+
+<h2>StudentDetail</h2>
+
+<div>
+    <h4>Student1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FatherName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FatherName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RollNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RollNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Department)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Gpa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Gpa)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfilePicture)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProfilePicture)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cv)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cv)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Actions)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Actions)
+        </dd>
+    </dl>
+</div>
+<a href="/Student/AllStudents" class="btn btn-success"><span class="glyphicon glyphicon-list"></span> All Students</a>
+<a href="/Student/DeleteStudent?Id=@Model.Id" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+<a href="/Student/EditStudent?Id=@Model.Id" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+
+
+<div>
+
+<div class="col-md-6" id="StudentsNamesDiv">
+</div>
+    </div>
+
+
+
+
+<div id="AdDiv">
+</div>
+
+@section abc
+    {
+    <script>
+        $(function () {
+
+            $('#AdDiv').load("/Student/ShowAd");
+            $('#StudentsNamesDiv').load(Student1.GetStudentsName;
+
+        });
+
+    </script>
+}
+
+
+
+<div>
+
+    <a asp-action="Index">Back to List</a>
+</div>
